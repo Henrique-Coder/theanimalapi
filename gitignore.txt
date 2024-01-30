@@ -1,7 +1,0 @@
-# IDE
-.idea
-venv
-
-# Others
-*.py
-all_files

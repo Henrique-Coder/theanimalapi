@@ -1,0 +1,12 @@
+# IDE
+.idea
+.venv
+
+# Directories
+# ...
+
+# Files
+# ...
+
+# Extensions
+*.py
