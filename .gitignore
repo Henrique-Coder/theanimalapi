@@ -9,4 +9,5 @@
 # ...
 
 # Extensions
+*.ini
 *.py
