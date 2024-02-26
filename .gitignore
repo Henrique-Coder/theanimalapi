@@ -1,13 +1,15 @@
 # IDE
 .idea
 .venv
+__pycache__
 
 # Directories
-# ...
+web
+.tests
 
 # Files
 # ...
 
 # Extensions
-*.ini
 *.py
+*.ini
