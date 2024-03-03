@@ -7,14 +7,14 @@ dynamic_folder = Path('assets', 'dynamic')
 
 
 def get_animal_images() -> dict:
-    with gzopen(Path(dynamic_folder, 'databases', 'animal_images.json.gz'), 'rt', encoding='utf-8') as f:
+    with gzopen(Path(dynamic_folder, 'database', 'animal_images.json.gz'), 'rt', encoding='utf-8') as f:
         animal_translations = json_load(f)
 
     return animal_translations
 
 
 def get_animal_translations() -> dict:
-    with gzopen(Path(dynamic_folder, 'databases', 'animal_translations.json.gz'), 'rt', encoding='utf-8') as f:
+    with gzopen(Path(dynamic_folder, 'database', 'animal_translations.json.gz'), 'rt', encoding='utf-8') as f:
         animal_images = json_load(f)
 
     return animal_images
