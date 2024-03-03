@@ -1,209 +1,237 @@
 <!DOCTYPE html>
-<html lang='en'>
-<head>
-  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-  <meta charset='UTF-8'>
-  <title>The Animal API - Documentation</title>
-  <style>
-    body {
-      background-color: #202225;
-      color: #DCDDDE;
-      font-family: 'Helvetica Neue', Arial, sans-serif;
-      padding: 20px;
-    }
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta charset="UTF-8">
+    <title>The Animal API - Documentation</title>
+    <style>
+      body {
+        background-color: #202225;
+        color: #dcddde;
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        padding: 20px
+      }
 
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-      background-color: #36393F;
-      padding: 20px;
-      border-radius: 5px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        background-color: #36393f;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, .1)
+      }
 
-    h1 {
-      text-align: left;
-      margin-bottom: 20px;
-    }
+      h1 {
+        text-align: left;
+        margin-bottom: 20px
+      }
 
-    .endpoint-info {
-      background-color: #40444B;
-      padding: 20px;
-      border-radius: 5px;
-      margin-bottom: 35px;
-    }
+      .endpoint-info {
+        background-color: #40444b;
+        padding: 20px;
+        border-radius: 5px;
+        margin-bottom: 35px
+      }
 
-    .param-item {
-      margin-bottom: 15px;
-    }
+      .param-item {
+        margin-bottom: 15px
+      }
 
-    .param-name {
-      font-weight: bold;
-      display: inline-block;
-      width: 90px;
-    }
+      .param-name {
+        font-weight: 700;
+        display: inline-block;
+        width: 90px
+      }
 
-    .param-name span {
-      font-family: 'Arial', sans-serif;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
+      .param-name span {
+        font-family: Arial, sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 1px
+      }
 
-    .param-input {
-      margin: 0 10px 10px 0;
-      width: 180px;
-      padding: 7px;
-      border-radius: 5px;
-      border: 2px solid #4a4d52;
-      background-color: #202225;
-      color: #DCDDDE;
-    }
+      .param-input {
+        margin: 0 10px 10px 0;
+        width: 180px;
+        padding: 7px;
+        border-radius: 5px;
+        border: 2px solid #4a4d52;
+        background-color: #202225;
+        color: #dcddde
+      }
 
-    .param-input:focus {
-      outline: none;
-      border: 2px solid #7289DA;
-    }
+      .param-input:focus {
+        outline: 0;
+        border: 2px solid #7289da
+      }
 
-    .param-button {
-      background-color: #7289DA;
-      color: #DCDDDE;
-      border: none;
-      padding: 5px 20px;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: background-color 0.3s ease-in-out;
-    }
+      .param-button {
+        background-color: #7289da;
+        color: #dcddde;
+        border: none;
+        padding: 5px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color .3s ease-in-out
+      }
 
-    .param-button:hover {
-      background-color: #4a4d52;
-    }
+      .param-button:hover {
+        background-color: #4a4d52
+      }
 
-    .test-api-button {
-      background-color: #43B581;
-      color: #DCDDDE;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 5px;
-      cursor: pointer;
-      margin-top: 20px;
-      margin-right: 10px;
-      transition: background-color 0.3s ease-in-out;
-    }
+      .test-api-button {
+        background-color: #43b581;
+        color: #dcddde;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 20px;
+        margin-right: 10px;
+        transition: background-color .3s ease-in-out
+      }
 
-    .test-api-button:hover {
-      background-color: #3BA55C;
-    }
+      .test-api-button:hover {
+        background-color: #3ba55c
+      }
 
-    .api-description {
-      margin-bottom: 10px;
-    }
+      .api-description {
+        margin-bottom: 10px
+      }
 
-    .response-container {
-      background-color: #40444B;
-      padding: 20px;
-      border-radius: 5px;
-      margin-top: 30px;
-      position: relative;
-      overflow: hidden;
-    }
+      .response-container {
+        background-color: #40444b;
+        padding: 20px;
+        border-radius: 5px;
+        margin-top: 30px;
+        position: relative;
+        overflow: hidden
+      }
 
-    .response-content {
-      color: #DCDDDE;
-      font-family: 'Courier New', Courier, monospace;
-      white-space: pre-wrap;
-      word-wrap: break-word;
-      overflow: auto;
-      max-height: 300px;
-      margin: 0;
-    }
+      .response-content {
+        color: #dcddde;
+        font-family: 'Courier New', Courier, monospace;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        overflow: auto;
+        max-height: 300px;
+        margin: 0
+      }
 
-    .image-preview {
-      display: none;
-      max-width: 100%;
-      margin: 0 auto;
-      margin-top: 20px;
-      border-radius: 5px;
-      box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-    }
-  </style>
-</head>
-<body>
-  <div class='container'>
-    <h1>The Animal API - Documentation</h1>
-    <div class='endpoint'>
-      <div class='endpoint-info'>
-        <div class='api-description'>
-          <p><strong>See interesting images and information about various animals...</strong></p>
-          <p>This API allows you to search and get random information and images of different animals for mostly entertainment purposes!</p>
+      .image-preview {
+        display: none;
+        max-width: 100%;
+        margin: 0 auto;
+        margin-top: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, .3)
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>The Animal API - Documentation</h1>
+      <div class="endpoint">
+        <div class="endpoint-info">
+          <div class="api-description">
+            <p>
+              <strong>See interesting images and information about various animals...</strong>
+            </p>
+            <p>This API allows you to search and get random information and images of different animals for mostly entertainment purposes!</p>
+          </div>
+          <p>
+            <strong>Main API Endpoint ➙</strong>/api/v1/search/animal
+          </p>
         </div>
-        <p><strong>Main API Endpoint ➙</strong> /api/v1/search/animal</p>
+        <div class="endpoint-params">
+          <div class="param-item">
+            <span class="param-name">
+              <span>・ name</span>
+            </span>
+            <input id="param-name" class="param-input" type="text" placeholder="Parameter: name">
+            <button class="param-button" onclick='generateResponse("/api/v1/search/animal?"+generateNameQueryParam())'>
+              <strong>Try Parameter</strong>
+            </button>
+          </div>
+          <div class="param-item">
+            <span class="param-name">
+              <span>・ lang</span>
+            </span>
+            <input id="param-lang" class="param-input" type="text" placeholder="Parameter: lang">
+            <button class="param-button" onclick='generateResponse("/api/v1/search/animal?"+generateLangQueryParam())'>
+              <strong>Try Parameter</strong>
+            </button>
+          </div>
+          <div class="param-item">
+            <span class="param-name">
+              <span>・ id</span>
+            </span>
+            <input id="param-id" class="param-input" type="text" placeholder="Parameter: id">
+            <button class="param-button" onclick='generateResponse("/api/v1/search/animal?"+generateIdQueryParam())'>
+              <strong>Try Parameter</strong>
+            </button>
+          </div>
+        </div>
+        <button class="test-api-button" onclick="runAPIWithParameters()">
+          <strong>Run API with input parameters</strong>
+        </button>
+        <button class="test-api-button" onclick="runMainAPI()">
+          <strong>Run Main API</strong>
+        </button>
       </div>
-      <div class='endpoint-params'>
-        <div class='param-item'>
-          <span class='param-name'><span>・ name</span></span> <input id='param-name' class='param-input' type='text' placeholder='Parameter: name'> <button class='param-button' onclick='generateResponse("/api/v1/search/animal?" + generateNameQueryParam())'><strong>Try Parameter</strong></button>
-        </div>
-        <div class='param-item'>
-          <span class='param-name'><span>・ lang</span></span> <input id='param-lang' class='param-input' type='text' placeholder='Parameter: lang'> <button class='param-button' onclick='generateResponse("/api/v1/search/animal?" + generateLangQueryParam())'><strong>Try Parameter</strong></button>
-        </div>
-        <div class='param-item'>
-          <span class='param-name'><span>・ id</span></span> <input id='param-id' class='param-input' type='text' placeholder='Parameter: id'> <button class='param-button' onclick='generateResponse("/api/v1/search/animal?" + generateIdQueryParam())'><strong>Try Parameter</strong></button>
-        </div>
-      </div><button class='test-api-button' onclick='runAPIWithParameters()'><strong>Run API with input parameters</strong></button> <button class='test-api-button' onclick='runMainAPI()'><strong>Run Main API</strong></button>
+      <div class="response-container">
+        <pre class="response-content" id="responseContent"></pre>
+        <img class="image-preview" id="imagePreview" src="" alt="Preview">
+      </div>
     </div>
-    <div class='response-container'>
-    <pre class='response-content' id='responseContent'></pre><img class='image-preview' id='imagePreview' src='' alt='Preview'></div>
-  </div>
-  <script>
-    function generateNameQueryParam() {
-      const name = document.getElementById('param-name').value;
-      if (name !== '') {
-        return 'name=' + encodeURIComponent(name);
+    <script>
+      function generateNameQueryParam() {
+        const name = document.getElementById('param-name').value;
+        if (name !== '') {
+          return 'name=' + encodeURIComponent(name);
+        }
+        return '';
       }
-      return '';
-    }
 
-    function generateLangQueryParam() {
-      const lang = document.getElementById('param-lang').value;
-      if (lang !== '') {
-        return 'lang=' + encodeURIComponent(lang);
+      function generateLangQueryParam() {
+        const lang = document.getElementById('param-lang').value;
+        if (lang !== '') {
+          return 'lang=' + encodeURIComponent(lang);
+        }
+        return '';
       }
-      return '';
-    }
 
-    function generateIdQueryParam() {
-      const id = document.getElementById('param-id').value;
-      if (id !== '') {
-        return 'id=' + encodeURIComponent(id);
+      function generateIdQueryParam() {
+        const id = document.getElementById('param-id').value;
+        if (id !== '') {
+          return 'id=' + encodeURIComponent(id);
+        }
+        return '';
       }
-      return '';
-    }
 
-    function generateQueryParams() {
-      const nameQueryParam = generateNameQueryParam();
-      const langQueryParam = generateLangQueryParam();
-      const idQueryParam = generateIdQueryParam();
-      const queryParams = [];
-      if (nameQueryParam !== '') {
-        queryParams.push(nameQueryParam);
+      function generateQueryParams() {
+        const nameQueryParam = generateNameQueryParam();
+        const langQueryParam = generateLangQueryParam();
+        const idQueryParam = generateIdQueryParam();
+        const queryParams = [];
+        if (nameQueryParam !== '') {
+          queryParams.push(nameQueryParam);
+        }
+        if (langQueryParam !== '') {
+          queryParams.push(langQueryParam);
+        }
+        if (idQueryParam !== '') {
+          queryParams.push(idQueryParam);
+        }
+        return queryParams.join('&');
       }
-      if (langQueryParam !== '') {
-        queryParams.push(langQueryParam);
-      }
-      if (idQueryParam !== '') {
-        queryParams.push(idQueryParam);
-      }
-      return queryParams.join('&');
-    }
 
-    function generateResponse(url) {
-      const responseContainer = document.querySelector('.response-container');
-      const progressBar = document.createElement('div');
-      progressBar.classList.add('progress-bar');
-      responseContainer.appendChild(progressBar);
-      responseContainer.classList.add('loading');
-      fetch(url)
-        .then(response => response.json())
-        .then(data => {
+      function generateResponse(url) {
+        const responseContainer = document.querySelector('.response-container');
+        const progressBar = document.createElement('div');
+        progressBar.classList.add('progress-bar');
+        responseContainer.appendChild(progressBar);
+        responseContainer.classList.add('loading');
+        fetch(url).then(response => response.json()).then(data => {
           const responseContent = document.getElementById('responseContent');
           const formattedData = JSON.stringify(data, null, 2);
           responseContent.textContent = formattedData;
@@ -216,24 +244,23 @@
           }
           responseContainer.classList.remove('loading');
           responseContainer.removeChild(progressBar);
-        })
-        .catch(error => console.log(error));
-    }
+        }).catch(error => console.log(error));
+      }
 
-    function runAPIWithParameters() {
-      const queryParams = generateQueryParams();
-      const url = '/api/v1/search/animal';
-      if (queryParams !== '') {
-        generateResponse(url + '?' + queryParams);
-      } else {
+      function runAPIWithParameters() {
+        const queryParams = generateQueryParams();
+        const url = '/api/v1/search/animal';
+        if (queryParams !== '') {
+          generateResponse(url + '?' + queryParams);
+        } else {
+          generateResponse(url);
+        }
+      }
+
+      function runMainAPI() {
+        const url = '/api/v1/search/animal';
         generateResponse(url);
       }
-    }
-
-    function runMainAPI() {
-      const url = '/api/v1/search/animal';
-      generateResponse(url);
-    }
-  </script>
-</body>
+    </script>
+  </body>
 </html>
