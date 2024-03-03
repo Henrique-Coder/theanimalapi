@@ -7,12 +7,10 @@ class IPRequestTimeout:
     REQUEST_LIMIT_DURATION_SECONDS = 0
 
     @staticmethod
-    def check_ip():
+    def check_ip() -> bool:
         ip_address = request.remote_addr
 
-        if ip_address in IPRequestTimeout.ip_requests and time() - IPRequestTimeout.ip_requests[
-            ip_address
-        ] < IPRequestTimeout.REQUEST_LIMIT_DURATION_SECONDS:
+        if ip_address in IPRequestTimeout.ip_requests and time() - IPRequestTimeout.ip_requests[ip_address] < IPRequestTimeout.REQUEST_LIMIT_DURATION_SECONDS:
             return False
 
         IPRequestTimeout.ip_requests[ip_address] = time()

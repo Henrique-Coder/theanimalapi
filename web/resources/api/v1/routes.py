@@ -5,11 +5,11 @@ from PIL import Image
 from httpx import get
 from io import BytesIO
 from random import choice
+from typing import Union
 
 
 app = current_app
 
-# Loading data from JSON file
 animal_images = get_animal_images()
 animal_translations = get_animal_translations()
 
@@ -18,7 +18,7 @@ image_ext = 'jpg'
 
 
 @app.route('/api/v1/<search>/<animal>')
-def search_v1(search, animal):
+def search_v1(search: str, animal: str) -> Union[jsonify, Response]:
     if not IPRequestTimeout.check_ip():
         return jsonify({
             'error': '429',
@@ -71,12 +71,6 @@ def search_v1(search, animal):
                         'message': 'ID Not Found'}), 404
 
     image_url = f'{url_path}/{result_name}/{result_name}-{result_id}.{image_ext}'
-
-    #proxies = {
-    #    'http': '',
-    #    'http': '',
-    #    'http': '',
-    #}
 
     image_content = get(image_url).content
     image_width, image_height = Image.open(BytesIO(image_content)).size
