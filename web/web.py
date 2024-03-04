@@ -35,6 +35,7 @@ def catch_wrong_version(path: str) -> jsonify:
 
 def configure_app() -> None:
     app.config['MAX_CONTENT_LENGTH'] = 10 * 1024 * 1024  # 10MB
+    app.config['JSON_SORT_KEYS'] = True
     app.config['STATIC_FOLDER'] = Path('assets/static')
     app.config['TEMPLATE_FOLDER'] = Path('templates')
 
