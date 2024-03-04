@@ -28,7 +28,7 @@ def get_animal_translation(translations: dict, name: str, language: str = None) 
         }
 
     if language is None:
-        language = 'en-us'
+        language = 'en'
 
     elif language not in translations[name]:
         return {
