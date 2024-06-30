@@ -4,10 +4,10 @@
 __pycache__
 
 # Directories
-.tests
+.debug
 
 # Files
 # ...
 
 # Extensions
-*.ini
+*.env
